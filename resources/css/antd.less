@@ -1,0 +1,136 @@
+@import "antd/dist/antd.less";
+
+.ant-tabs-nav {
+    background: #fff;
+    padding: 0px 20px;
+    margin: 0 0 12px 0 !important;
+    border-radius: 6px;
+}
+
+.ant-menu-item > span > a, .ant-menu-title-content{
+    color: #fff !important;
+}
+
+.ant-menu-dark .ant-menu-inline.ant-menu-sub {
+    background: none !important;
+}
+
+.ant-tabs-content-holder, .ant-table {
+    border-radius: 6px !important;
+}
+.ant-table-container table > thead > tr:first-child th:first-child{
+    border-top-left-radius: 6px !important;
+}
+.ant-table-container table > thead > tr:first-child th:last-child{
+    border-top-right-radius: 6px !important;
+}
+a {
+    transition: none !important;
+}
+
+.ant-pagination li,
+.ant-pagination button {
+    border-radius: 50px !important;
+}
+.ant-pagination button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.ant-input{
+    border-radius: 6px;
+}
+.ant-select-selector{
+    border-radius: 6px !important;
+}
+
+.ant-steps-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.ant-menu-submenu-title, .ant-menu-item{
+    padding: 0 12px !important;
+}
+.ant-menu-sub .ant-menu-item{
+    padding: 0 0 0 36px !important;
+}
+.ant-comment-inner{
+    padding: 0 !important;
+}
+
+.dail-report .ant-table {
+    display: block;
+    @media screen and (max-width: 600px) {
+        colgroup,  col {
+            width: 100% !important;
+        }
+      &-thead {
+        display: none;
+      }
+
+      &-thead>tr,
+      &-tbody>tr {
+
+        th,
+        td {
+          &:first-of-type {
+            padding-top: 1rem;
+          }
+
+          &:last-of-type {
+            padding-bottom: 1rem;
+          }
+        }
+
+        >th,
+        >td {
+          display: block;
+          width: 100% !important;
+          border: none;
+          padding: 0.8rem 1rem;
+          &:last-child {
+            border-bottom: 1px solid #eee;
+          }
+        }
+      }
+    }
+  }
+
+
+ .timesheet .ant-table-thead > tr > th
+{
+    white-space: nowrap;
+}
+
+.timesheet .ant-table {
+    overflow-x: scroll;
+}
+
+
+.timesheet .ant-table::-webkit-scrollbar-thumb {
+    height: 56px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: hsl(0,0%,67%);
+}
+
+.timesheet .ant-table::-webkit-scrollbar {
+    width: 12px;
+}
+
+.ant-message-notice-content{
+    padding: 8px 12px !important;
+}
+
+.ant-message-success{
+    display: flex;
+    align-items: center;
+}

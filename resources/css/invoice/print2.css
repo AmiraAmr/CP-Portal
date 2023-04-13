@@ -1,0 +1,92 @@
+@media print {
+    * {
+        transition: none !important;
+        -webkit-transition: none !important;
+         -moz-transition: none !important;
+    }
+    body
+    {
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #2a2a2a;
+        background: #fff;
+    }
+    header{
+        max-width: 80% !important;
+        margin: 0 auto;
+    }
+    .details {
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: calc(11/12 * 100%) !important;
+    }
+    .details {
+        margin-bottom: 0px;
+    }
+    .title{
+        font-size: 14px;
+        margin: 0;
+    }
+    .fw-md{
+        font-weight:600!important;
+        font-size: 14px;
+    }
+    .t-points{
+        width: 20px;
+        margin-left: 10px;
+    }
+    .tab .t-points {
+        width: 5px;
+    }
+    .col-sm-1 {
+        flex: 0 0 auto;
+        width: 8.33333333%;
+    }
+    .col-sm-4 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+    .col-8 {
+        flex: 0 0 auto;
+        width: 80%;
+    }
+    .text-group{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+    }
+    .text-group>.form-control, .input-group>.form-select {
+        position: relative;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+    }
+    .fw-md{
+        font-weight:500!important;
+        font-size: 14px;
+    }
+    .table{
+        border-color: #2a2a2a !important;
+        font-size: 14px;
+    }
+    .table .thead {
+        vertical-align: bottom;
+        background: #2a2a2a !important;
+        border: 1px solid #fff;
+        color: #fff;
+    }
+    .table>:not(:first-child){
+        border-top: 1px solid;
+    }
+    .arabic{
+        font-family: Cairo;
+    }
+    }
