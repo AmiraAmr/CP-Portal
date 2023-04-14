@@ -90,12 +90,7 @@ const Tender = (props) => {
     }, [xField, series]);
 
     return (
-        <div className="bg-white p-4 rounded-md flex flex-col gap-3 space-y-3">
-            <div className="flex items-center justify-between">
-                <span className="text-lg text-gray-700 font-semibold">
-                    Tender
-                </span>
-            </div>
+        <div className="p-4 flex flex-col gap-3 space-y-3">
             <Descriptions
                 bordered
                 column={{

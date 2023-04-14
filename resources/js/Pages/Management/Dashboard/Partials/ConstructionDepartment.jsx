@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
-import ManagementLayout from "@/Layouts/ManagementLayout";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Line } from "@ant-design/plots";
 import { Descriptions, Select } from "antd";
@@ -16,7 +15,6 @@ const ConstructionDepartment = ({ projects }) => {
     const [options, setOptions] = useState([]);
     const [selectedProjects, setSelectedProjects] = useState([]);
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
         setSelectedProjects(value);
     };
 
@@ -144,17 +142,12 @@ const ConstructionDepartment = ({ projects }) => {
         });
     }, [projects]);
     return (
-        <div className="bg-white p-4 rounded-md flex flex-col gap-3 ">
-            <div className="flex items-center justify-between ">
-                <span className="text-lg text-gray-700 font-semibold">
-                    Construction Department
-                </span>
-            </div>
+        <div className="flex flex-col gap-3">
             <Select
                 mode="multiple"
                 allowClear
                 showSearch={false}
-                placeholder="Please select"
+                placeholder="Select a specific project"
                 style={{
                     width: "100%",
                     marginTop: "8px",

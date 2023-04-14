@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "@/Components/Navbar";
 import { ConfigProvider } from "antd";
-import { isMobile } from "react-device-detect";
 
 import "../../css/app.css";
 import "../../css/antd.less";
@@ -28,6 +27,7 @@ export default function ManagementLayout({ auth, header, children }) {
                     />
                     <Navbar
                         auth={auth}
+                        header={header}
                         showingSidebar={showingSidebar}
                         setShowingSidebar={setShowingSidebar}
                     />

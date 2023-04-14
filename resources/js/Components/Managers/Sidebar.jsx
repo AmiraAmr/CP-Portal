@@ -360,9 +360,9 @@ const Sidebar = ({ auth }) => {
         ),
     ];
     return (
-        <motion.div className="scrollbar lg:flex hidden fixed max-w-[18.5rem] h-full w-full bg-[#23408A] flex-col justify-between overflow-y-scroll">
+        <motion.div className="scrollbar lg:flex hidden fixed max-w-[18.5rem] h-full w-full bg-[#000000] flex-col justify-between overflow-y-scroll">
             <div className="flex flex-col">
-                <div className="flex px-4 pt-7 pb-3">
+                <div className="flex px-4 pt-7 pb-3 justify-center">
                     <img
                         src="/img/logo.png"
                         className="block h-24 w-auto fill-current text-gray-800"
@@ -383,7 +383,7 @@ const Sidebar = ({ auth }) => {
                         );
                     })}
                     <Menu
-                        className="!border-none !bg-[#23408A]"
+                        className="!border-none !bg-[#000000]"
                         mode="inline"
                         items={items}
                         theme="dark"

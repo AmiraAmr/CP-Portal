@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import moment from "moment/moment";
 import Notifications from "./Notifications";
 
-const Navbar = ({ auth }) => {
+const Navbar = ({ auth, header }) => {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const [showingNotifications, setShowingNotifications] = useState(false);
@@ -14,51 +12,29 @@ const Navbar = ({ auth }) => {
             <nav className="lg:ml-[18.5rem] bg-white border-gray-100">
                 <div className="mx-auto px-4">
                     <div className="flex justify-between h-20 items-center">
-                        <div className="lg:hidden flex w-full justify-between items-center gap-2 px-2">
-                            <div className="flex items-center gap-2">
-                                <svg
-                                    viewBox="64 64 896 896"
-                                    focusable="false"
-                                    className="w-4 h-4"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519a8.84 8.84 0 000-13.9L142.4 381.9c-5.8-4.6-14.4-.5-14.4 6.9v246.3a8.9 8.9 0 0014.4 7z"></path>
-                                </svg>
-                                <span>Dashboard</span>
-                            </div>
-                            <div>
-                                <svg
-                                    viewBox="64 64 896 896"
-                                    focusable="false"
-                                    className="w-4 h-4"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
-                                </svg>
-                            </div>
+                        <div className="flex items-center gap-2">
+                            <span>{ header }</span>
                         </div>
-                        <div className="flex-1 hidden lg:block">
+                        <div className="hidden lg:block">
                             <div className="flex items-center relative">
-                                <span className="absolute inset-y-0 left-0 flex items-center justify-center w-10  text-gray-400 pointer-events-none group-focus-within:text-primary-500">
+                                <input
+                                    type="text"
+                                    className="max-w-xs w-full pr-10 bg-[#f9f9f9] rounded-lg border-none text-gray-500 font-semibold text-sm focus:ring-0 focus:border-none block pl-10 py-3 px-4"
+                                    name="id"
+                                    placeholder="Search..."
+                                />
+                                <span className="absolute inset-y-0 right-1 flex items-center justify-center w-10 text-gray-400 bg-[#4B5F8C] rounded-lg pointer-events-none group-focus-within:text-primary-500">
                                     <svg
                                         width="20"
                                         height="20"
                                         viewBox="0 0 24 24"
-                                        fill="#292D32"
+                                        fill="#fff"
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path d="M11.5 21.75C5.85 21.75 1.25 17.15 1.25 11.5C1.25 5.85 5.85 1.25 11.5 1.25C17.15 1.25 21.75 5.85 21.75 11.5C21.75 17.15 17.15 21.75 11.5 21.75ZM11.5 2.75C6.67 2.75 2.75 6.68 2.75 11.5C2.75 16.32 6.67 20.25 11.5 20.25C16.33 20.25 20.25 16.32 20.25 11.5C20.25 6.68 16.33 2.75 11.5 2.75Z" />
                                         <path d="M21.9999 22.7499C21.8099 22.7499 21.6199 22.6799 21.4699 22.5299L19.4699 20.5299C19.1799 20.2399 19.1799 19.7599 19.4699 19.4699C19.7599 19.1799 20.2399 19.1799 20.5299 19.4699L22.5299 21.4699C22.8199 21.7599 22.8199 22.2399 22.5299 22.5299C22.3799 22.6799 22.1899 22.7499 21.9999 22.7499Z" />
                                     </svg>
                                 </span>
-                                <input
-                                    type="text"
-                                    className="max-w-xs w-full pr-10 bg-[#f9f9f9] rounded-lg border-none text-gray-500 font-semibold text-sm  focus:ring-0 focus:border-none block pl-10 py-3 px-4"
-                                    name="id"
-                                    placeholder="Search..."
-                                />
                             </div>
                         </div>
                         <div className="hidden lg:flex lg:items-center lg:mr-6 space-x-3">
