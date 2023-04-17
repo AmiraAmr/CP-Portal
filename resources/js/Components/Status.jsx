@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 
 const Status = ({ status }) => {
-    console.log(status);
     const [ textProps, setTextProps ] = useState({
         text: '',
         backgroundColor: ''
     })
 
     useEffect(() => {
-        
+
     switch (status) {
         case 1:
             setTextProps({
@@ -28,7 +27,7 @@ const Status = ({ status }) => {
                 backgroundColor: 'bg-[#e4a05c]'
             })
             break;
-    
+
         default:
             setTextProps({
                 text: '',
