@@ -21,6 +21,7 @@ import { stateOfWorkFlow } from "@/Components/States";
 import { SyncOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import Filter from "./Partials/Filter";
 import ModalAttendance from "./Partials/ModalAttendance";
+import DropdownButton from "@/Components/DropdownButton";
 
 const Index = (props) => {
     const [attendanceUser, setAttendanceUser] = useState({});
@@ -206,83 +207,49 @@ const Index = (props) => {
                             dataIndex: "action",
                             key: "action",
                             render: (_, record) => (
-                                <Space size="middle">
-                                    <Dropdown.Button
-                                        menu={{
-                                            items: [
-                                                {
-                                                    label:
-                                                        record.admin == 1
-                                                            ? "Make User"
-                                                            : "Make Admin",
-                                                    key: "1",
-                                                    onClick: () =>
-                                                        handleChange(
-                                                            record.key,
-                                                            "admin",
-                                                            record.admin,
-                                                            record.name
-                                                        ),
-                                                },
-                                                {
-                                                    label: "attendance report",
-                                                    key: "2",
-                                                    onClick: () =>
-                                                        router.get(
-                                                            `/managers/performance/${record.key}`
-                                                        ),
-                                                },
-                                                {
-                                                    label: "profile",
-                                                    key: "3",
-                                                    onClick: () =>
-                                                        router.get(
-                                                            `/managers/HR/profile/${record.key}`
-                                                        ),
-                                                },
-                                                {
-                                                    label: `Attendance : ${record.name}`,
-                                                    key: "4",
-                                                    onClick: () =>
-                                                        showModal(record.user),
-                                                },
-                                                {
-                                                    label: "Delete",
-                                                    key: "5",
-                                                    onClick: () =>
-                                                        showDeleteConfirm(
-                                                            "/managers/user/",
-                                                            record.key,
-                                                            "user.usertable"
-                                                        ),
-                                                },
-                                                {
-                                                    label: "Edit",
-                                                    key: "6",
-                                                    onClick: () =>
-                                                        router.get(
-                                                            `/admin/user/edit/${record.key}`
-                                                        ),
-                                                },
-
-                                                {
-                                                    label:
-                                                        record.manager == 1
-                                                            ? "Make User"
-                                                            : "Make Manager",
-                                                    key: "8",
-                                                    onClick: () =>
-                                                        handleChange(
-                                                            record.key,
-                                                            "manager",
-                                                            record.manager,
-                                                            record.name
-                                                        ),
-                                                },
-                                            ],
-                                        }}
-                                    ></Dropdown.Button>
-                                </Space>
+                                <DropdownButton buttonTitle={"Actions"}
+                                    actions={[
+                                        {
+                                            label:
+                                                record.admin == 1
+                                                    ? "Make User"
+                                                    : "Make Admin",
+                                            action: () => handleChange(
+                                                record.key,
+                                                "admin",
+                                                record.admin,
+                                                record.name
+                                            )
+                                        },
+                                        {
+                                            label: "attendance report",
+                                            action: () => router.get(`/managers/performance/${record.key}`)
+                                        },
+                                        {
+                                            label: `Attendance : ${record.name}`,
+                                            action: () => showModal(record.user)
+                                        },
+                                        {
+                                            label: "Delete",
+                                            action: () => setAttendance(record.data)
+                                        },
+                                        {
+                                            label: "Edit",
+                                            action: () => router.get(`/admin/user/edit/${record.key}`)
+                                        },
+                                        {
+                                            label: record.manager == 1
+                                            ? "Make User"
+                                            : "Make Manager",
+                                            action: () => handleChange(
+                                                record.key,
+                                                "manager",
+                                                record.manager,
+                                                record.name
+                                            )
+                                        }
+                                    ]}
+                                />
                             ),
                         },
                     ]}

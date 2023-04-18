@@ -17,6 +17,8 @@ import { router, Link } from "@inertiajs/react";
 import { showDeleteConfirm } from "@/Components/ModalDelete";
 import Workflow from "./Partials/Workflow";
 import axios from "axios";
+import Status from "@/Components/Status";
+import DropdownButton from "@/Components/DropdownButton";
 
 const Index = (props) => {
     const { Step } = Steps;
@@ -157,17 +159,7 @@ const Index = (props) => {
                             render: (_, { status, cylce }) => (
                                 <>
                                     {status !== null && (
-                                        <Tag
-                                            color={
-                                                stateOfWorkFlow[status].color
-                                            }
-                                            style={{
-                                                borderRadius: "999px",
-                                                cursor: "pointer",
-                                            }}
-                                        >
-                                            {stateOfWorkFlow[status].name}
-                                        </Tag>
+                                        <Status status={status} />
                                     )}
                                 </>
                             ),
@@ -177,52 +169,45 @@ const Index = (props) => {
                             dataIndex: "action",
                             key: "action",
                             render: (_, record) => (
-                                <Dropdown.Button
-                                    menu={{
-                                        items: [
-                                            {
-                                                label: "Preview",
-                                                key: "1",
-                                                onClick: () =>
-                                                    router.get(
-                                                        `/managers/matrial_requestreturn/${record.key}`
-                                                    ),
-                                            },
-                                            {
-                                                label: "Edit",
-                                                key: "2",
-                                                onClick: () =>
-                                                    router.get(
-                                                        `/managers/update_matrial/${record.key}`
-                                                    ),
-                                            },
-                                            {
-                                                label: `forward To Po`,
-                                                key: "3",
-                                                onClick: () =>
-                                                    forwardToPo(record.key),
-                                            },
-                                            {
-                                                label: `forwardToPC`,
-                                                key: "4",
-                                                onClick: () =>
-                                                    forwardToPetty_cash(
-                                                        record.key
-                                                    ),
-                                            },
-                                            {
-                                                label: "Delete",
-                                                key: "5",
-                                                onClick: () =>
-                                                    showDeleteConfirm(
-                                                        "/user/delete_matrial_request_data/",
-                                                        record.key,
-                                                        "managers.index_matrial_request"
-                                                    ),
-                                            },
-                                        ],
-                                    }}
-                                ></Dropdown.Button>
+                                <DropdownButton buttonTitle={"Actions"}
+                                    actions={[
+                                        {
+                                            label: "Preview",
+                                            action: () =>
+                                                router.get(
+                                                    `/managers/matrial_requestreturn/${record.key}`
+                                                ),
+                                        },
+                                        {
+                                            label: "Edit",
+                                            action: () =>
+                                                router.get(
+                                                    `/managers/update_matrial/${record.key}`
+                                                ),
+                                        },
+                                        {
+                                            label: `forward To Po`,
+                                            action: () =>
+                                                forwardToPo(record.key),
+                                        },
+                                        {
+                                            label: `forwardToPC`,
+                                            action: () =>
+                                                forwardToPetty_cash(
+                                                    record.key
+                                                ),
+                                        },
+                                        {
+                                            label: "Delete",
+                                            action: () =>
+                                                showDeleteConfirm(
+                                                    "/user/delete_matrial_request_data/",
+                                                    record.key,
+                                                    "managers.index_matrial_request"
+                                                ),
+                                        },
+                                    ]}
+                                />
                             ),
                         },
                     ]}

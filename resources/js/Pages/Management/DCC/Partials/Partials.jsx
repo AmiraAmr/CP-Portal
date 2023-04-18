@@ -6,6 +6,7 @@ import { router, Link } from "@inertiajs/react";
 import { showDeleteConfirm } from "@/Components/ModalDelete";
 import useApi from "./useApi";
 import moment from "moment";
+import Status from "@/Components/Status";
 const Partials = ({ name, cylcePartials, url, filter, workflow, cols }) => {
     const { Step } = Steps;
     const [cylce, setCylce] = useState([]);
@@ -156,18 +157,13 @@ const Partials = ({ name, cylcePartials, url, filter, workflow, cols }) => {
                         render: (_, { status, cylce }) => (
                             <>
                                 {status !== null && (
-                                    <Tag
-                                        color={stateOfWorkFlow[status].color}
-                                        onClick={() => {
-                                            showModal(), setCylce(cylce);
-                                        }}
-                                        style={{
-                                            borderRadius: "999px",
-                                            cursor: "pointer",
-                                        }}
-                                    >
-                                        {stateOfWorkFlow[status].name}
-                                    </Tag>
+                                    <Status
+                                    status={status}
+                                    onClick={() => {
+                                        showModal()
+                                        setCylce(cylce)}
+                                }
+                                />
                                 )}
                             </>
                         ),

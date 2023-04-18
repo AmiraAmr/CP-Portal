@@ -6,7 +6,7 @@ import { router, Link } from "@inertiajs/react";
 import { showDeleteConfirm } from "@/Components/ModalDelete";
 import useApi from "./useApi";
 import moment from "moment";
-const Salaries = ({ name, filter, workflow, cols }) => {
+const Salaries = ({ name, filter, cylcePartials, workflow, cols }) => {
     const { Step } = Steps;
     const [cylce, setCylce] = useState([]);
     const [status, setStatus] = useState([]);
@@ -55,7 +55,7 @@ const Salaries = ({ name, filter, workflow, cols }) => {
                     {
                         key: item.id,
                         code: item.ref,
-                        user_name: item.user.name,
+                        user_name: item?.user?.name,
                         date: item.date,
                         subject: item.subject,
                         status: item.status,

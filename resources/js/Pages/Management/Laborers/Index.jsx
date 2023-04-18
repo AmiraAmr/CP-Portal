@@ -3,22 +3,13 @@ import ManagementLayout from "@/Layouts/ManagementLayout";
 import {
     Alert,
     Button,
-    DatePicker,
-    Dropdown,
-    Modal,
-    Pagination,
-    Space,
-    Steps,
     Table,
-    Tag,
 } from "antd";
-import { router, Link } from "@inertiajs/react";
-import { showDeleteConfirm } from "@/Components/ModalDelete";
+import { router } from "@inertiajs/react";
 import axios from "axios";
 import moment from "moment";
-import { stateOfWorkFlow } from "@/Components/States";
-import { SyncOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import Filter from "./Partials/Filter";
+import DropdownButton from "@/Components/DropdownButton";
 
 const Index = (props) => {
     const [openWorkflow, setOpenWorkflow] = useState(false);
@@ -300,46 +291,26 @@ const Index = (props) => {
                             dataIndex: "action",
                             key: "action",
                             render: (_, record) => (
-                                <Space size="middle">
-                                    <Dropdown.Button
-                                        menu={{
-                                            items: [
-                                                {
-                                                    label: "Edit",
-                                                    key: "2",
-                                                    onClick: () =>
-                                                        router.get(
-                                                            `/managers/Laborer_edit/${record.key}`
-                                                        ),
-                                                },
-                                                {
-                                                    label: "Report",
-                                                    key: "2",
-                                                    onClick: () =>
-                                                        router.get(
-                                                            `/managers/performance/${record.key}`
-                                                        ),
-                                                },
-                                                {
-                                                    label: `Attendance : ${record.name}`,
-                                                    key: "2",
-                                                    onClick: () =>
-                                                        setAttendance(
-                                                            record.data
-                                                        ),
-                                                },
-                                                {
-                                                    label: `Attendance : ${record.name}`,
-                                                    key: "2",
-                                                    onClick: () =>
-                                                        setAttendance(
-                                                            record.data
-                                                        ),
-                                                },
-                                            ],
-                                        }}
-                                    ></Dropdown.Button>
-                                </Space>
+                                <DropdownButton buttonTitle={"Actions"}
+                                    actions={[
+                                        {
+                                            label: "Edit",
+                                            action: () => router.get(`/managers/Laborer_edit/${record.key}`)
+                                        },
+                                        {
+                                            label: "Report",
+                                            action: () => router.get(`/managers/performance/${record.key}`)
+                                        },
+                                        {
+                                            label: `Attendance : ${record.name}`,
+                                            action: () => setAttendance(record.data)
+                                        },
+                                        {
+                                            label: `Attendance : ${record.name}`,
+                                            action: () => setAttendance(record.data)
+                                        }
+                                    ]}
+                                />
                             ),
                         },
                     ]}

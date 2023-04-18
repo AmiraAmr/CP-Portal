@@ -20,6 +20,7 @@ import moment from "moment";
 import { Line } from "@ant-design/plots";
 import axios from "axios";
 import Salaries from "./Partials/Salaries";
+import Status from "@/Components/Status";
 
 const Index = (props) => {
     const { RangePicker } = DatePicker;
@@ -121,47 +122,17 @@ const Index = (props) => {
                                         {delivery_feedback.delivery_date <
                                             today &&
                                         delivery_feedback.closed !== 1 ? (
-                                            <Tag
-                                                color="warning"
-                                                style={{
-                                                    borderRadius: "999px",
-                                                    cursor: "pointer",
-                                                }}
-                                            >
-                                                Warning
-                                            </Tag>
+                                            <Status status={4} />
                                         ) : null}
                                         {delivery_feedback.delivery_date >=
                                             today &&
                                         delivery_feedback.closed !== 1 ? (
-                                            <Tag
-                                                icon={<SyncOutlined spin />}
-                                                color="processing"
-                                                style={{
-                                                    borderRadius: "999px",
-                                                    cursor: "pointer",
-                                                    display: "inline-flex ",
-                                                    alignItems: "center ",
-                                                }}
-                                            >
-                                                Pending
-                                            </Tag>
+                                            <Status status={3} Icon={<SyncOutlined spin />} customStyle={"!w-[110px]"} />
                                         ) : null}
                                         {delivery_feedback.delivery_date >=
                                             today &&
                                         delivery_feedback.closed == 1 ? (
-                                            <Tag
-                                                icon={<CheckCircleOutlined />}
-                                                color="success"
-                                                style={{
-                                                    borderRadius: "999px",
-                                                    cursor: "pointer",
-                                                    display: "inline-flex ",
-                                                    alignItems: "center ",
-                                                }}
-                                            >
-                                                Closed
-                                            </Tag>
+                                            <Status status={5} Icon={<CheckCircleOutlined />} customStyle={"!w-[110px]"} />
                                         ) : null}
                                     </>
                                 ),
@@ -222,7 +193,7 @@ const Index = (props) => {
                             },
                         ]}
                     />
-                    <Salaries name="Salaries" filter={filter}/>
+                    <Salaries name="Salaries" filter={filter} cylcePartials="name" />
                     <Partials
                         name="Matrial Request"
                         url="/managers/jsondcmatrial_request"
