@@ -4,6 +4,7 @@ import { Button, Modal, Pagination, Space, Steps, Table, Tag } from "antd";
 import { stateOfWorkFlow } from "@/Components/States";
 import { router, Link } from "@inertiajs/react";
 import { showDeleteConfirm } from "@/Components/ModalDelete";
+import Status from "@/Components/Status";
 
 const Index = (props) => {
     const { Step } = Steps;
@@ -133,20 +134,13 @@ const Index = (props) => {
                             render: (_, { status, cylce }) => (
                                 <>
                                     {status !== null && (
-                                        <Tag
-                                            color={
-                                                stateOfWorkFlow[status].color
-                                            }
+                                        <Status
+                                            status={status}
                                             onClick={() => {
-                                                showModal(), setCylce(cylce);
-                                            }}
-                                            style={{
-                                                borderRadius: "999px",
-                                                cursor: "pointer",
-                                            }}
-                                        >
-                                            {stateOfWorkFlow[status].name}
-                                        </Tag>
+                                                showModal()
+                                                setCylce(cylce)}
+                                            }
+                                        />
                                     )}
                                 </>
                             ),

@@ -19,6 +19,7 @@ import { SyncOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { Line } from "@ant-design/plots";
 import axios from "axios";
+import Status from "@/Components/Status";
 
 const Index = (props) => {
     const { RangePicker } = DatePicker;
@@ -173,47 +174,17 @@ const Index = (props) => {
                                         {delivery_feedback.delivery_date <
                                             today &&
                                         delivery_feedback.closed !== 1 ? (
-                                            <Tag
-                                                color="warning"
-                                                style={{
-                                                    borderRadius: "999px",
-                                                    cursor: "pointer",
-                                                }}
-                                            >
-                                                Warning
-                                            </Tag>
+                                            <Status status={4} />
                                         ) : null}
                                         {delivery_feedback.delivery_date >=
                                             today &&
                                         delivery_feedback.closed !== 1 ? (
-                                            <Tag
-                                                icon={<SyncOutlined spin />}
-                                                color="processing"
-                                                style={{
-                                                    borderRadius: "999px",
-                                                    cursor: "pointer",
-                                                    display: "inline-flex ",
-                                                    alignItems: "center ",
-                                                }}
-                                            >
-                                                Pending
-                                            </Tag>
+                                            <Status status={0} Icon={<SyncOutlined spin />} customStyle={"!w-[110px]"} />
                                         ) : null}
                                         {delivery_feedback.delivery_date >=
                                             today &&
                                         delivery_feedback.closed == 1 ? (
-                                            <Tag
-                                                icon={<CheckCircleOutlined />}
-                                                color="success"
-                                                style={{
-                                                    borderRadius: "999px",
-                                                    cursor: "pointer",
-                                                    display: "inline-flex ",
-                                                    alignItems: "center ",
-                                                }}
-                                            >
-                                                Closed
-                                            </Tag>
+                                            <Status status={5} Icon={<CheckCircleOutlined />} customStyle={"!w-[110px]"} />
                                         ) : null}
                                     </>
                                 ),
