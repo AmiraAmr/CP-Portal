@@ -33,7 +33,7 @@ export default function Authenticated({ auth, header, children }) {
                     />
                 </div>
                 <div className="lg:pl-[18.5rem] lg:pr-10 flex flex-col h-full">
-                    <main className="bg-[#f9f9f9] rounded-3xl p-6 flex-1">
+                    <main className="bg-[#F4F3FB] rounded-3xl p-6 flex-1">
                         {children}
                     </main>
                     <Footer />
