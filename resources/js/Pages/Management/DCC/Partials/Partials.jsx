@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Button, Modal, Pagination, Space, Steps, Table, Tag } from "antd";
-import { stateOfWorkFlow } from "@/Components/States";
-import { router, Link } from "@inertiajs/react";
-import { showDeleteConfirm } from "@/Components/ModalDelete";
+import { Pagination, Space, Steps, Table, Tag } from "antd";
 import useApi from "./useApi";
 import moment from "moment";
 import Status from "@/Components/Status";

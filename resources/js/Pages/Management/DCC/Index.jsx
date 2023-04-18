@@ -127,7 +127,7 @@ const Index = (props) => {
                                         {delivery_feedback.delivery_date >=
                                             today &&
                                         delivery_feedback.closed !== 1 ? (
-                                            <Status status={3} Icon={<SyncOutlined spin />} customStyle={"!w-[110px]"} />
+                                            <Status status={0} Icon={<SyncOutlined spin />} customStyle={"!w-[110px]"} />
                                         ) : null}
                                         {delivery_feedback.delivery_date >=
                                             today &&

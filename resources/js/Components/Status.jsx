@@ -5,9 +5,16 @@ const Status = ({ status, Icon, customStyle, onClick }) => {
         text: '',
         backgroundColor: ''
     })
+    console.log(status);
 
     useEffect(() => {
     switch (status) {
+        case 0:
+            setTextProps({
+                text: 'pending',
+                backgroundColor: 'bg-[#e4a05c]'
+            })
+            break;
         case 1:
             setTextProps({
                 text: 'accepted',
@@ -21,22 +28,15 @@ const Status = ({ status, Icon, customStyle, onClick }) => {
                 })
                 break;
             case 3:
-            case 0:
                 setTextProps({
-                    text: 'pending',
-                    backgroundColor: 'bg-[#e4a05c]'
+                    text: 'closed',
+                    backgroundColor: 'bg-[#047011]'
                 })
                 break;
             case 4:
                 setTextProps({
                     text: 'warning',
                     backgroundColor: 'bg-[#ffcc00]'
-                })
-                break;
-            case 5:
-                setTextProps({
-                    text: 'closed',
-                    backgroundColor: 'bg-[#6ccd3c]'
                 })
                 break;
 
