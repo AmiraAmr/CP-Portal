@@ -18,7 +18,7 @@ const DropdownButton = ({ buttonTitle, contentHead, actions, customStyle }) => {
                             <Dropdown.Link
                                 key={label}
                                 href={href}
-                                target={"_blank"}
+                                target="_blank"
                                 customStyle={textStyle}
                             >
                                 {label}
@@ -27,7 +27,10 @@ const DropdownButton = ({ buttonTitle, contentHead, actions, customStyle }) => {
                         (
                             <div
                                 key={label}
-                                className={`${textStyle} block w-full px-4 py-2 text-left text-sm leading-5 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out`}
+                                className={`${textStyle} block w-full px-4 py-2
+                                            text-left text-sm leading-5
+                                            focus:outline-none focus:bg-gray-100
+                                            transition duration-150 ease-in-out`}
                                 onClick={action}
                             >
                                 {label}

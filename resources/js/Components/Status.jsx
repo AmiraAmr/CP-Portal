@@ -5,7 +5,6 @@ const Status = ({ status, Icon, customStyle, onClick }) => {
         text: '',
         backgroundColor: ''
     })
-    console.log(status);
 
     useEffect(() => {
     switch (status) {
