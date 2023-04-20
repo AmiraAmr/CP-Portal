@@ -1,0 +1,10 @@
+.ant-upload.ant-upload-drag {
+    background-color: transparent !important;
+    border: none !important;
+}
+.ant-input {
+    border: none !important;
+}
+.ant-input:focus {
+    box-shadow: none !important;
+}

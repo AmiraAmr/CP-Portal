@@ -13,13 +13,14 @@ const DropdownButton = ({ buttonTitle, contentHead, actions, customStyle }) => {
                 { contentHead ?? '' }
 
                 {
-                    actions.map(({ label, href, action }) => (
+                    actions.map(({ label, href, action, download=false }) => (
                         href ? (
                             <Dropdown.Link
                                 key={label}
                                 href={href}
                                 target="_blank"
                                 customStyle={textStyle}
+                                download={download}
                             >
                                 {label}
                             </Dropdown.Link>
@@ -28,7 +29,7 @@ const DropdownButton = ({ buttonTitle, contentHead, actions, customStyle }) => {
                             <div
                                 key={label}
                                 className={`${textStyle} block w-full px-4 py-2
-                                            text-left text-sm leading-5
+                                            text-left text-sm leading-5 capitalize
                                             focus:outline-none focus:bg-gray-100
                                             transition duration-150 ease-in-out`}
                                 onClick={action}

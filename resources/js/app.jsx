@@ -3,6 +3,7 @@ import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ConfigProvider } from "antd";
 import "./bootstrap";
+import "./styles/styles.css"
 
 
 const appName =
