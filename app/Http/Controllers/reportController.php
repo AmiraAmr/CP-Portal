@@ -16,6 +16,7 @@ use Inertia\Inertia;
 use App\Classes_interface\monthly_summary_report\query\FacadeQuery;
 class reportController extends Controller
 {
+    use FacadeQuery;
     public function stockPage()
     {
         $projects = project::all();
