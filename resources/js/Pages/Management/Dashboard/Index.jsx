@@ -6,8 +6,10 @@ import Marketing from "./Partials/Marketing";
 import Procurement from "./Partials/Procurement";
 import Statistics from "./Partials/Statistics";
 import Tender from "./Partials/Tender";
+import axios from "axios";
 
 export default function Dashboard(props) {
+    axios.get("/managers/reports/performance/json").then((res) => console.log("res", res))
     return (
         <ManagementLayout
             auth={props.auth}
