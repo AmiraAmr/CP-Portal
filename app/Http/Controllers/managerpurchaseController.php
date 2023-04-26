@@ -34,10 +34,11 @@ use App\purchase_paid;
 use App\supplier;
 use Inertia\Inertia;
 use App\User\purchase_order\query;
+use App\Classes_interface\monthly_summary_report\FacadeReport;
 
 class managerpurchaseController extends Controller
 {
-    
+    use FacadeReport;
 
 
     public function __construct()
@@ -443,6 +444,11 @@ class managerpurchaseController extends Controller
                             $Purchase_order->update([
                                 'status' => 1,
                             ]);
+
+
+                            
+$this->FacadeReport($Purchase_order->total , 'cash_out' , auth()->user());
+
 
 
                             // ----------------------------  project budget -------------------------------------------------

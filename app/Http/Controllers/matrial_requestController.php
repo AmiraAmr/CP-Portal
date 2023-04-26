@@ -39,7 +39,7 @@ use App\getlatest\latest ;
 class matrial_requestController extends Controller
 {
 
-use MSaveFiles , MItem , cc , find , query , steps ,
+use MSaveFiles , MItem  , find , query , steps ,
 ProjectSelectBox,Mcycle , explodeRef , Mupdate , latest
 ;
 
@@ -130,14 +130,15 @@ ProjectSelectBox,Mcycle , explodeRef , Mupdate , latest
  
                 $content   = 'user name:'.' '.auth()->user()->name ?? ''.'Project Name:'.' '.$matrial_request->project->name ?? ''.'has been created:' .' '. $matrial_request->ref . 'is waiting for review';
  
+$cc = new cc;
 
-             $this->mail($users ?? [] ,$matrial_request,$content);
+             $cc->mail($users ?? [] ,$matrial_request,$content);
                
            
                 $workflow  =   $this->find($this->type);
                
                
-           $this->mail($workflow->role->user,$matrial_request,$content);
+           $cc->mail($workflow->role->user,$matrial_request,$content);
   
                 
 

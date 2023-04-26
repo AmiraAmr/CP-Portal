@@ -14,6 +14,8 @@ use App\project_overall;
 use App\flowworkStep;
 use Carbon\Carbon;
 use App\subcontractor_request_cycle;
+use App\Classes_interface\monthly_summary_report\FacadeReport;
+
 use App\comment_subcontractor_cycle;
 use Illuminate\Support\Facades\Storage;
 use App\attachment_subcontractor_cycle;
@@ -193,7 +195,10 @@ NotificationEvent::dispatch($subcontractor->user->id,$content);
                 $subcontractor->update([
 'status'=>1,
                 ]);
-              
+
+                $this->FacadeReport($subcontractor->total , 'cash_out' , auth()->user());
+
+          
                 // -------------------------  project expenses -------------------------------------
 
               $subcontractor->project->subcontractor_expenses !== null ?   $subcontractor->project->increment('subcontractor_expenses',$subcontractor->total)

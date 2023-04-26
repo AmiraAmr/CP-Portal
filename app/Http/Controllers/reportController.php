@@ -13,7 +13,7 @@ use App\project_overall;
 use App\summaryreoprt;
 use App\section;
 use Inertia\Inertia;
-
+use App\Classes_interface\monthly_summary_report\query\FacadeQuery;
 class reportController extends Controller
 {
     public function stockPage()
@@ -578,10 +578,12 @@ if($request->project_id){
             }
         });
         $data = $data->with(['project_overall' => function ($q) {
+            
             return $q->select([
                 'date', 'id', 'cash_in', 'cash_out',
                 'percentage_performance', 'percentage_attendance', 'project_id'
             ]);
+
         }]);
 
         $data =   $data->get();
@@ -668,4 +670,86 @@ if($request->project_id){
         return Inertia::render('Management/Reports/Marketing');
         return view('managers.report.section.marketing');
     }
+    
+
+    public function cash_out()
+    {
+        return Inertia::render('Management/Reports/cash_out');
+        return view('managers.report.cash_out');
+    }
+
+
+    public function cash_in()
+    {
+        return Inertia::render('Management/Reports/cash_in');
+        return view('managers.report.cash_in');
+    }
+
+    public function performance()
+    {
+        return Inertia::render('Management/Reports/performance');
+        return view('managers.report.performance');
+    }
+
+    public function commitment()
+    {
+        return Inertia::render('Management/Reports/commitment');
+        return view('managers.report.commitment');
+    }
+
+
+    public function company()
+    {
+        return Inertia::render('Management/Reports/company');
+        return view('managers.report.company');
+    }
+
+
+
+
+    public function performance_json(request $request){
+
+ $data = $this->query_monthly_report('performance',$request);
+
+ return response(['data'=>$data]);
+    }
+
+
+    public function commitment_json(request $request){
+        
+        $data = $this->query_monthly_report('commitment',$request);
+       
+        return response(['data'=>$data]);
+           }
+
+
+           public function cash_out_json(request $request){
+        
+            $data = $this->query_monthly_report('cash_out',$request);
+           
+            return response(['data'=>$data]);
+               }
+
+
+               public function cash_in_json(request $request){
+        
+                $data = $this->query_monthly_report('cash_in',$request);
+               
+                return response(['data'=>$data]);
+                   }
+
+
+
+                   
+               public function company_json(request $request){
+        
+                $data = $this->query_monthly_report('company',$request);
+               
+                return response(['data'=>$data]);
+                   }
+
+                   
+
+
+
 }

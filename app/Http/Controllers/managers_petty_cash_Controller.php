@@ -20,6 +20,8 @@ use App\petty_inv;
 use App\Jobs\sendcc;
 use App\attachment_petty_cash_cycle;
 use App\Events\NotificationEvent;
+use App\Classes_interface\monthly_summary_report\FacadeReport;
+
 class managers_petty_cash_Controller extends Controller
 
 {
@@ -194,6 +196,12 @@ public function inv(request $request,petty_cash $petty_cash){
                 $petty_cash->update([
         'status'=>1,
              ]);
+
+                                         
+$this->FacadeReport($petty_cash->expected_amount , 'cash_out' , auth()->user());
+
+
+
       
          //    $report =   report::where('date',$petty_cash->date)->increment('total_cash_out',0);
 /*

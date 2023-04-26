@@ -18,7 +18,6 @@ use App\Jobs\sendcc;
 use App\Exceptions\CustomException;
 use App\Events\NotificationEvent;
 use Inertia\Inertia;
-
 class subcontractorController extends Controller
 {
 
@@ -341,7 +340,6 @@ class subcontractorController extends Controller
                     //'payment_no'=>$request->payment_no,
 
                 ]);
-
 
 
 
