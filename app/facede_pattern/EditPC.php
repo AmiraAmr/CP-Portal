@@ -15,7 +15,7 @@ use App\petty_cash_attachment;
 
 
 trait EditPC {
- use find , DeletePC , PTUpdate ,  cc  , steps , PCCycle ,explodeRef
+ use find , DeletePC , PTUpdate   , steps , PCCycle ,explodeRef
  , latest ;
   
 
@@ -43,8 +43,8 @@ $attribute_table = $petty_cash->attributes()->getRelated()->getTable();
  
 $content   = 'user name:'.' '.auth()->user()->name ?? ''.'Project Name:'.' '.$Purchase_order->project->name ?? ''.'has been created:' .' '. $Purchase_order->ref . 'is waiting for review';
  
-
-$this->mail($users ?? [] ,$Purchase_order,$content);
+$cc = new cc;
+$cc->mail($users ?? [] ,$Purchase_order,$content);
 
 
 

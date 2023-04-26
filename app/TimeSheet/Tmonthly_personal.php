@@ -7,7 +7,8 @@ trait Tmonthly_personal  {
     public function Tmonthly_personal($attendance , $numbers_util_now=null , $time){
 
       
-  $timesheet_monthly_personal =     personal_overall::where(['user_id'=>$attendance['user_id'],'date'=>Carbon::now()->startOfMonth(),])->first();
+  $timesheet_monthly_personal =     personal_overall::where(['user_id'=>$attendance['user_id'],
+  'date'=>Carbon::now()->startOfMonth(),])->first();
  
 $increment = 1  / $numbers_util_now * 100;
 

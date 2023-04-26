@@ -11,9 +11,10 @@ use App\performance\FacadePerformance;
 use App\TimeSheet\ITimeSheet;
 use App\attendance\calculeteTime;
 use App\attendance\CalculeteLongTerm;
-
+use App\User;
+use App\Classes_interface\monthly_summary_report\FacadeReport;
 class user_daily_report implements attributesModule {
-use Dispatchable , FacadePerformance , ITimeSheet  , calculeteTime , CalculeteLongTerm;
+use Dispatchable , FacadePerformance , ITimeSheet , FacadeReport  , calculeteTime , CalculeteLongTerm;
 
     public function attributes_store($data,$model,$list,$request=null){
       $list [ ] =  [ 
@@ -65,6 +66,13 @@ null);
     
 'project_id'=>$request->project_id
       ];
+
+$user =  User::find($data['id']);
+
+    $this->FacadeReport($data['commitment'] , 'commitment' ,$user);
+
+    $this->FacadeReport($data['performance'] , 'performance' ,$user);
+
 
         $this->TimeSheet($timesheet_data , $CalculeteLongTerm , $time);
 

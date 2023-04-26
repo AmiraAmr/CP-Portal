@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Jobs\sendcc;
 use Carbon\Carbon;
 use App\notification;
-
-trait cc {
-
+use Illuminate\Foundation\Bus\Dispatchable;
+class cc {
+use Dispatchable;
 public function mail($data,$model,$content){
   
     
@@ -32,10 +32,14 @@ public function mail($data,$model,$content){
           
        
         
-            $job = (new sendcc($user,$content,''))->delay(Carbon::now()->addSeconds(90));
-            $this->dispatch($job);
+         
+    sendcc::dispatch($user,$content,'')
+    ->delay(now()->addMinutes(10));
+
+
       //      NotificationEvent::dispatch($user->id,$content);
 
+      CreateFact::dispatch($job);
       
       $notification[] = [
         'type' => 4,

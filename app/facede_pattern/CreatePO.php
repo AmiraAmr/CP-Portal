@@ -11,19 +11,18 @@ use App\InterFace\WorkFlow\find ;
 use App\InterFace\WorkFlow\steps ;
 
 use App\User\purchase_order\PPayment;
-use App\User\purchase_order\query;
+use Illuminate\Foundation\Bus\Dispatchable;
 use App\User\purchase_order\cycle;
-
-
+use App\Classes_interface\monthly_summary_report\FacadeReport;
 
 use App\purchase_order_attachment;
 
 
 
 class CreatePO {
- use find , PInsert , 
-  PPayment , cc  ,query , steps , cycle ,explodeRef
- , latest ;
+ use find , PInsert ,
+  PPayment , FacadeReport , steps , cycle ,explodeRef
+ , latest , FacadeReport ;
   
 
 
@@ -47,13 +46,20 @@ public function create($request, $payment , $users ,$type ,
 
 $Purchase_order = $this->insert($request,$cash,$on_vat , $explode);
 
+
+$this->FacadeReport($request->overall , 'cash_out' , auth()->user());
+
+
 $attribute_table = $Purchase_order->attributes()->getTable();
 
  
 $content   = 'user name:'.' '.auth()->user()->name ?? ''.'Project Name:'.' '.$Purchase_order->project->name ?? ''.'has been created:' .' '. $Purchase_order->ref . 'is waiting for review';
  
 
-$this->mail($users ?? [] ,$Purchase_order,$content);
+$cc = new cc;
+
+
+$cc->mail($users ?? [] ,$Purchase_order,$content);
 
 
 
@@ -63,7 +69,7 @@ $this->mail($users ?? [] ,$Purchase_order,$content);
     $workflow  =   $this->find($type);
 
 
- $this->mail($workflow->role->user,$Purchase_order,$content);
+ $cc->mail($workflow->role->user,$Purchase_order,$content);
   
 
 

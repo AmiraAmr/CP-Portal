@@ -65,15 +65,6 @@ use App\Http\Controllers\managerpurchaseController;
 use App\Http\Controllers\managersMatrialrequestController;
 use App\Http\Controllers\marketingController;
 use App\Http\Controllers\taskManagerController;
-
-
-
-
-
-
-
-
-
 use App\Http\Controllers\usersupplierController;
 use App\Http\Middleware\laborer;
 use App\project;
@@ -385,13 +376,11 @@ Route::middleware([laborer::class])->group(function () {
 
         Route::post('/updating/{dailyReport}', [daily_reportController::class, 'updating'])->name('updating_daily_Report.user');
 
-
         Route::post('/json_daily_Report', [daily_reportController::class, 'json_daily_Report'])->name('json_daily_Report.user');
 
         Route::post('/inserting', [daily_reportController::class, 'inserting'])->name('inserting.user');
 
         Route::post('/supervisor/{project}', [daily_reportController::class, 'supervisor'])->name('supervisor.user');
-
 
         Route::post('/delete/{dailyReport}', [daily_reportController::class, 'delete'])->name('delete.user');
     });
@@ -863,6 +852,56 @@ Route::middleware([laborer::class])->group(function () {
 
 
 
+
+
+            Route::group(['prefix' => 'company'],  function () {
+
+                Route::get('/', [reportController::class, 'company'])->name('company_report');
+
+            Route::post('/json', [reportController::class, 'company_json'])->name('company.json');
+
+
+            });
+
+
+            Route::group(['prefix' => 'cash_out'],  function () {
+
+                Route::get('/', [reportController::class, 'cash_out'])->name('cash_out.report');
+
+            Route::post('/json', [reportController::class, 'cash_out_json'])->name('cash_out.json');
+
+
+            });
+
+
+            Route::group(['prefix' => 'cash_in'],  function () {
+
+                Route::get('/', [reportController::class, 'cash_in'])->name('cash_in.report');
+
+            Route::post('/json', [reportController::class, 'cash_in_json'])->name('cash_in.json');
+
+
+            });
+
+
+            Route::group(['prefix' => 'performance'],  function () {
+
+                Route::get('/', [reportController::class, 'performance'])->name('performance.report');
+
+            Route::post('/json', [reportController::class, 'performance_json'])->name('performancejson');
+
+
+            });
+
+
+            Route::group(['prefix' => 'commitment'],  function () {
+
+                Route::get('/', [reportController::class, 'commitment'])->name('tenderjson');
+
+            Route::post('/json', [reportController::class, 'commitment_json'])->name('tenderjson');
+
+
+            });
 
             Route::group(['prefix' => 'department'],  function () {
 

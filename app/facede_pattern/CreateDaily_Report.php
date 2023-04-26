@@ -11,10 +11,10 @@ use App\InterFace\WorkFlow\steps ;
 use App\daily_report_attachment;
 use App\daily_productivity;
 use App\DailyReport\DInsert;
+use App\image_daily_report;
 
 class CreateDaily_Report {
- use find , DInsert , 
-  cc  , steps , explodeRef
+ use find , DInsert   , steps , explodeRef
  , latest ;
   
 
@@ -53,7 +53,13 @@ $content   = 'user name:'.' '.auth()->user()->name ?? ''.'Project Name:'.' '.$da
 
 
 
-  $SaveFiles->SaveFile($request,$daily_report, new daily_report_attachment,'daily_report');
+  $SaveFiles->SaveFile($request,$daily_report, new daily_report_attachment,'daily_report',null ,$request->count);
+
+
+
+  $SaveFiles->SaveFile($request,$daily_report, new image_daily_report,'image_daily_report', 'dailyReport/image' , $request->fileImage, 'fileImage-'  );
+
+
 
 
 
