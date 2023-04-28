@@ -894,6 +894,26 @@ Route::middleware([laborer::class])->group(function () {
             });
 
 
+            
+            Route::group(['prefix' => 'HR'],  function () {
+
+            Route::post('/json', [reportController::class, 'HR_json'])->name('HRjson');
+
+
+            });
+
+
+
+                 Route::group(['prefix' => 'financial'],  function () {
+
+                Route::get('/', [reportController::class, 'financial'])->name('financialjson');
+
+            Route::post('/json', [reportController::class, 'financial_json'])->name('financialjson');
+
+
+            });
+
+
             Route::group(['prefix' => 'commitment'],  function () {
 
                 Route::get('/', [reportController::class, 'commitment'])->name('tenderjson');

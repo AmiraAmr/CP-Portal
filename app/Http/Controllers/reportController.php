@@ -750,7 +750,26 @@ if($request->project_id){
                    }
 
                    
+                   
+               public function financial_json(request $request){
+        
+                $data = $this->query_monthly_report('financial',$request);
+               
+                return response(['data'=>$data]);
+                   }
 
 
+                   public function HR_json(request $request){
+        
+                    $data = $this->query_monthly_report('HR',$request);
+                   
+                    return response(['data'=>$data]);
+                       }
+    
+
+
+                   
+
+                   
 
 }
