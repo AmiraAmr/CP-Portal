@@ -1,15 +1,23 @@
 import ManagementLayout from "@/Layouts/ManagementLayout";
-import { Head, Link } from "@inertiajs/react";
-import { Space, Table, Tag } from "antd";
+import { Head } from "@inertiajs/react";
 import ConstructionDepartment from "./Partials/ConstructionDepartment";
 import Marketing from "./Partials/Marketing";
 import Procurement from "./Partials/Procurement";
-import Statistics from "./Partials/Statistics";
 import Tender from "./Partials/Tender";
 import axios from "axios";
+import CashIn from "./Partials/CashIn";
+import CashOut from "./Partials/CashOut";
+import ManpowerPerformance from "./Partials/ManpowerPerformance";
+import ManpowerCommitment from "./Partials/ManpowerCommitment";
+import Company from "./Partials/Company";
 
 export default function Dashboard(props) {
-    axios.get("/managers/reports/performance/json").then((res) => console.log("res", res))
+
+    // axios.post("/managers/report/performance/json").then((res) => console.log("performance", res.data))
+    // axios.post("/managers/report/commitment/json").then((res) => console.log("commitment", res.data))
+    // axios.post("/managers/report/cash_in/json").then((res) => setCashInData(res.data))
+    // axios.post("/managers/report/cash_out/json").then((res) => console.log("cash_out", res.data.data))
+    // axios.post("/managers/report/company/json").then((res) => console.log("company", res.data))
     return (
         <ManagementLayout
             auth={props.auth}
@@ -29,11 +37,11 @@ export default function Dashboard(props) {
                     <RenderContainer title={"Procurement Department"} component={<Procurement />} />
                     <RenderContainer title={"Accounting Department"} component={<Tender />} />
                     <RenderContainer title={"HR Department"} component={<Tender />} />
-                    <RenderContainer title={"Manpower Performance"} component={<Tender />} />
-                    <RenderContainer title={"Manpower Commitment"} component={<Tender />} />
+                    <RenderContainer title={"Manpower Performance"} component={<ManpowerPerformance />} />
+                    <RenderContainer title={"Manpower Commitment"} component={<ManpowerCommitment />} />
                     <RenderContainer title={"Cash in KPI"} component={<Tender />} />
-                    <RenderContainer title={"Cash out KPI"} component={<Tender />} />
-                    <RenderContainer customStyle={"!col-span-12"} title={"Overall KPI"} component={<Tender />} />
+                    <RenderContainer title={"Cash out KPI"} component={<CashOut />} />
+                    <RenderContainer customStyle={"!col-span-12"} title={"Overall KPI"} component={<Company />} />
                 </div>
             </div>
         </ManagementLayout>
