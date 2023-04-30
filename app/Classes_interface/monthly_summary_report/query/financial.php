@@ -1,9 +1,9 @@
 <?php
-namespace App\Classes_interface\monthly_summary_report;
+namespace App\Classes_interface\monthly_summary_report\query;
 
 class financial implements I_report_query  {
     
-use Filter;
+    use Filter;
 
     public function query_monthly_report($request=null , $model){
 
