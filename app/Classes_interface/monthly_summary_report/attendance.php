@@ -47,16 +47,7 @@ return $this->global_calculator($model->attendance_percentage ?? 0 , $user->role
   }
 
 
-  public function query_monthly_report($request=null , $model){
-
-    $model =  $model->select(['id','date', 'attendance_percentage']);
-    
-    $model = $this->query_Filter($request,$model);
-    
-    return $model->get();
-    
-    
-        }
+ 
   
 
 }
