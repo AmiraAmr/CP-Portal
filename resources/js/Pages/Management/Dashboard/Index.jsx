@@ -10,12 +10,14 @@ import CashOut from "./Partials/CashOut";
 import ManpowerPerformance from "./Partials/ManpowerPerformance";
 import ManpowerCommitment from "./Partials/ManpowerCommitment";
 import Company from "./Partials/Company";
+import Hr from "./Partials/HR";
+import Accounting from "./Partials/Accounting";
 
 export default function Dashboard(props) {
 
     // axios.post("/managers/report/performance/json").then((res) => console.log("performance", res.data))
     // axios.post("/managers/report/commitment/json").then((res) => console.log("commitment", res.data))
-    // axios.post("/managers/report/cash_in/json").then((res) => setCashInData(res.data))
+    axios.post("/managers/report/cash_in/json").then((res) => console.log("Cash in", res.data))
     // axios.post("/managers/report/cash_out/json").then((res) => console.log("cash_out", res.data.data))
     // axios.post("/managers/report/company/json").then((res) => console.log("company", res.data))
     return (
@@ -35,8 +37,8 @@ export default function Dashboard(props) {
                     <RenderContainer title={"Tender Department"} component={<Tender />} />
                     <RenderContainer title={"Marketing Department"} component={<Marketing />} />
                     <RenderContainer title={"Procurement Department"} component={<Procurement />} />
-                    <RenderContainer title={"Accounting Department"} component={<Tender />} />
-                    <RenderContainer title={"HR Department"} component={<Tender />} />
+                    <RenderContainer title={"Accounting Department"} component={<Accounting />} />
+                    <RenderContainer title={"HR Department"} component={<Hr />} />
                     <RenderContainer title={"Manpower Performance"} component={<ManpowerPerformance />} />
                     <RenderContainer title={"Manpower Commitment"} component={<ManpowerCommitment />} />
                     <RenderContainer title={"Cash in KPI"} component={<Tender />} />
