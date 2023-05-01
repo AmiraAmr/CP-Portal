@@ -14,7 +14,8 @@ const Tender = (props) => {
     const [dataForLine, setDataForLine] = useState([]);
     const fetch = () => {
         axios.post(`/managers/report/department/tender/json`).then((res) => {
-            setData(res.data.data.monthly_section);
+            console.log("dcnkj ett", res.data.data);
+            setData(res.data.data);
         });
     };
 
