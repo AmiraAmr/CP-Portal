@@ -18,7 +18,7 @@ export default function Dashboard(props) {
     // axios.post("/managers/report/performance/json").then((res) => console.log("performance", res.data))
     // axios.post("/managers/report/commitment/json").then((res) => console.log("commitment", res.data))
 
-    axios.post("/managers/report/department/tender/json").then((res) => console.log("tender", res.data))
+    // axios.post("/managers/report/department/tender/json").then((res) => console.log("tender", res.data))
     // axios.post("/managers/report/cash_in/json").then((res) => console.log("Cash in", res.data))
     // axios.post("/managers/report/cash_out/json").then((res) => console.log("cash_out", res.data.data))
     // axios.post("/managers/report/company/json").then((res) => console.log("company", res.data))
@@ -36,14 +36,14 @@ export default function Dashboard(props) {
             <div className="flex flex-col gap-6">
                 <div className="grid grid-cols-12 gap-12">
                     <RenderContainer title={"Construction Department"} component={<ConstructionDepartment projects={props.projects}/>} />
-                    {/* <RenderContainer title={"Tender Department"} component={<Tender />} /> */}
+                    <RenderContainer title={"Tender Department"} component={<Tender />} />
                     <RenderContainer title={"Marketing Department"} component={<Marketing />} />
                     <RenderContainer title={"Procurement Department"} component={<Procurement />} />
                     <RenderContainer title={"Accounting Department"} component={<Accounting />} />
                     <RenderContainer title={"HR Department"} component={<Hr />} />
                     <RenderContainer title={"Manpower Performance"} component={<ManpowerPerformance />} />
                     <RenderContainer title={"Manpower Commitment"} component={<ManpowerCommitment />} />
-                    {/* <RenderContainer title={"Cash in KPI"} component={<CashIn />} /> */}
+                    <RenderContainer title={"Cash in KPI"} component={<CashIn />} />
                     <RenderContainer title={"Cash out KPI"} component={<CashOut />} />
                     <RenderContainer customStyle={"!col-span-12"} title={"Overall KPI"} component={<Company />} />
                 </div>

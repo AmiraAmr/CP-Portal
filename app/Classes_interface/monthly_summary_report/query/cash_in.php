@@ -6,7 +6,7 @@ use Filter;
 
     public function query_monthly_report($request=null , $model){
 
-$model =  $model->select(['id','date', 'cash_out_percentage']);
+$model =  $model->select(['id','date', 'cash_in_percentage']);
 
 $model = $this->query_Filter($request,$model);
 

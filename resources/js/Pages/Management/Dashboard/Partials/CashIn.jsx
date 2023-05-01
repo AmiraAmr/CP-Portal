@@ -13,7 +13,7 @@ const CashIn = (props) => {
     const [dataForLine, setDataForLine] = useState([]);
     const fetch = () => {
         axios
-            .post(`/managers/report/department/procurement/json`)
+            .post(`/managers/report/cash_in/json`)
             .then((res) => {
                 console.log("cash in", res.data.data);
                 setData(res.data.data);
